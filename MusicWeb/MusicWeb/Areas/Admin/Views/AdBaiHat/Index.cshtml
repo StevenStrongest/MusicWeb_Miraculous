@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model List<MusicWeb.Areas.Admin.Data.BaiHatModelAdmin>
+
+<div>
+
+    <h2>&nbsp;&nbsp;Danh sách bài hát</h2>
+    @*@{
+                    var grid = new WebGrid(source: Model, canPage: true, rowsPerPage: 5);
+                    @grid.GetHtml(tableStyle: "webGrid", headerStyle: "webgrid-header", alternatingRowStyle: "webgrid=alternating=row",
+                    rowStyle: "webgrid-row-style", mode: WebGridPagerModes.All, firstText: "<<", previousText: "<", nextText: ">", lastText: ">>",
+                    htmlAttributes: new { id = "DataTable" },
+                   columns: grid.Columns(
+                       grid.Column("TenBaiHat", header: "Tên bài hát", canSort: false),
+                       //grid.Column("AnhBaiHat", header: "", format:@<img src="" alt="Alternate Text" width="100" height="100" />),
+                       grid.Column("LoiBaihat", header: "Lười bài hát", canSort: false),
+                       grid.Column("NgayPhatHanh", header: "Ngày phát hành", canSort: false),
+                       grid.Column("LuotNghe", header: "Lượt nghe", canSort: false),
+                       grid.Column("LuotTai", header: "Lượt tải", canSort: false),
+                       grid.Column("LuotThich", header: "Lượt thích", canSort: false),
+                       grid.Column(header: "", format:@<text><a href="#">xem</a></text>, canSort: false),
+                       grid.Column(header: "", format:@<text><a href="#">Upload</a></text>, canSort: false)
+        )
+        )
+                }*@
+    <div class="card-body"><a href="~/Admin/AdBaiHat/Add" class="btn btn-success">Thêm bài hát</a></div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tên bài hát</th>
+                        <th>Ngày phát hành</th>
+                        <th>Lượt nghe</th>
+                        <th>Lượt tải</th>
+                        <th>Lượt thích</th>
+                        @*<th>Nghệ sĩ</th>*@
+                        @*<th>Thể loại</th>*@
+                        @*<th>Alum</th>*@
+                        <th>Sửa</th>
+                        <th>Xóa</th>
+                        <th>Chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TenBaiHat</td>
+                            <td>@item.NgayPhatHanh</td>
+                            <td>@item.LuotNghe</td>
+                            <td>@item.LuotTai</td>
+                            <td>@item.LuotThich</td>
+                            @*<td>@item.NgheSi</td>*@
+                            @*<td>@item.TenTheLoai</td>*@
+                            @*<td>@item.TenAlbum</td>*@
+                            <td><a href="~/Admin/AdBaiHat/Update?id=@item.ID">Sửa</a></td>
+                            <td><a href="~/Admin/AdBaiHat/Del?id=@item.ID">Xóa</a></td>
+                            <td><a href="~/Admin/AdBaiHat/Detail?id=@item.ID">Chi tiết</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

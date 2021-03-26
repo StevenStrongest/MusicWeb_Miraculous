@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "PlayVideo";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model Model.Video
+
+@{
+    List<Model.Video> TatCaVideo = ViewBag.TatCaVideo;
+}
+
+<div style="margin: 50px 0px" id="PlayVideo">
+    <div class="row">
+        <div class="col-8">
+            <video width="800" id="player" preload="auto" autoplay="autoplay" playsinline controls poster="/Assets/images/PosterVideo/@Model.Poster">
+                <source src="~/VideoDowload/@Model.LinkVideoMp4" type="video/mp4" />
+                <!-- Captions are optional -->
+            </video>
+            <div style="display: inline-block" id="infomation-video">
+                <h5 style="font-size: 20px">@Model.TieuDe</h5>
+                <h5 style="font-size: 15px;padding: 5px 0px">@Model.NgheSi.TenNgheSi</h5>
+            </div>
+
+            @if (Session["TaiKhoan"] == null)
+            {
+                <div style="display: inline-block;float: right; padding: 10px" id="user-in">
+                    <div class="icon-user">
+                        <button data-toggle="modal" data-target="#myModal1" class="btn btn-video"><i class="fa fa-thumbs-up"></i></button>
+                        <span>Thích</span>
+                    </div>
+                    <div class="icon-user">
+                        <button data-toggle="modal" data-target="#myModal1" class="btn btn-video btn-video-comment"><i class="fa fa-comment"></i></button>
+                        <span>Bình Luận</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="display: inline-block;float: right; padding: 10px" id="user-in">
+                    <div class="icon-user">
+                        <button onclick="AddMv(@Model.IdVideo)" class="btn btn-video"><i class="fa fa-thumbs-up"></i></button>
+                        <span>Thích</span>
+                    </div>
+                    <div class="icon-user">
+                        <button data-toggle="modal" class="btn btn-video btn-video-comment" data-target="#ModalBinhLuan"><i class="fa fa-comment"></i></button>
+                        <span>Bình Luận</span>                    
+                    </div>
+                </div>
+            }
+
+            <!--Nghệ Sĩ thực hiện-->
+            <div style="padding: 25px 0px" class="container mt-3">
+                <div class="media border p-3">
+                    <img src="~/Assets/images/ImagesOutSource/ImagesSing/@Model.NgheSi.AnhNgheSi" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                    <div style="padding: 15px 20px;" class="media-body">
+                        <div style="display: inline-block" class="thongtinNgheSi">
+                            <h4 style="font-size: 12px">@Model.NgheSi.TenNgheSi</h4>
+                            @if (Model.NgheSi.LuotQuanTam > 100000)
+                            {
+                                var x = Model.NgheSi.LuotQuanTam.ToString();
+                                var luot = x.Substring(0, 3) + "k";
+                                <p>@luot người theo dõi</p>
+                            }
+                            else
+                            {
+                                <p>@Model.NgheSi.LuotQuanTam người theo dõi</p>
+                            }
+                        </div>
+
+                        @if (Session["taikhoan"] != null)
+                        {
+                            <button onclick="AddNgheSiYeuThich(@Model.IdNgheSi)" style="float: right" class="btn btn-video btn-video-quantam"><i class="fa fa-user-plus"></i> Quan tâm</button>
+                        }
+                        else
+                        {                           
+                            <button data-toggle="modal" data-target="#myModal1" style="float: right" class="btn btn-video btn-video-quantam"><i class="fa fa-user-plus"></i> Quan tâm</button>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding: 20px 0px" class="Comment">
+                <h3 style="font-size: 17px">Bình Luận</h3>
+                @Html.Partial("~/Views/Video/VideoPartial/TatCaBinhLuan.cshtml")
+            </div>
+        </div>
+        <div class="col-4">
+            @Html.Partial("~/Views/Video/VideoPartial/VideoKhac.cshtml", TatCaVideo)
+        </div>
+    </div>
+</div>
+
+

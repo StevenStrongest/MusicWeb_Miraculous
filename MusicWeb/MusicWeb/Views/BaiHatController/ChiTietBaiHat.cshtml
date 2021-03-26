@@ -1,0 +1,83 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model Model.BaiHat
+@{
+    List<Model.BaiHat> BaiHatKhac = ViewBag.BaiHatKhac;
+}
+
+
+<div class="ms_album_single_wrapper ms_artist_single">
+    <div class="album_single_data">
+        <div class="album_single_img">
+            <img src="~/Assets/images/ImagesOutSource/ImagesSing/@Model.NgheSi.AnhNgheSi" alt="" class="img-fluid" />
+        </div>
+        <div class="album_single_text">
+            <h2>@Model.TenBaiHat</h2>
+            <p class="singer_name">@Model.NgheSi.TenNgheSi</p>
+            <div class="about_artist">
+
+                <span><span class="hide-text" style="display: none">Lời bài hát</span></span>
+                <a onclick="ReadMore()" href="javascritp:0">Xem Thêm</a>
+            </div>
+            <div class="album_btn">
+                <a href="#" class="ms_btn play_btn"><span class="play_all"><img src="images/svg/play_all.svg" alt="">Play All</span><span class="pause_all"><img src="images/svg/pause_all.svg" alt="">Pause</span></a>
+                <a href="#" class="ms_btn"><span class="play_all"><img src="images/svg/add_q.svg" alt="">Add To Queue</span></a>
+            </div>
+        </div>
+        <div class="album_more_optn ms_more_icon">
+            <span><img src="images/svg/more.svg" alt=""></span>
+        </div>
+        <ul class="more_option">
+            @if (Session["taikhoan"] != null)
+            {
+                <li><a onclick="AddBaiHatFavorit(@Model.IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_fav"></span></span>Yêu thích</a></li>
+            }
+            else
+            {
+                <li><a href="javascript:0" data-toggle="modal" data-target="#myModal1"><span class="opt_icon"><span class="icon icon_fav"></span></span>Yêu thích</a></li>
+            }
+            <li><a onclick="AddQueue(@Model.IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_queue"></span></span>Danh sách phát</a></li>
+
+            <li><a href="/Home/Dowload?id=@Model.IdBaiHat"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Tải xuống</a></li>
+
+            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+            <li>
+                <div class="fb-share-button" data-href="@Model.LinkChiaSe" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="wrap">
+        <div id="emoij-area">
+            <div class="wrap-emoij" id="emoij">
+                <ul>
+                    <li><img id="like" src="~/Assets/images/LikeIcon/like.png" alt=""></li>
+                    <li><img id="heart" src="~/Assets/images/LikeIcon/heart.png" alt=""></li>
+                    <li><img id="love" src="~/Assets/images/LikeIcon/love.png" alt=""></li>
+                    <li><img id="haha" src="~/Assets/images/LikeIcon/haha.png" alt=""></li>
+                    <li><img id="wow" src="~/Assets/images/LikeIcon/wow.png" alt=""></li>
+                    <li><img id="sad" src="~/Assets/images/LikeIcon/sad.png" alt=""></li>
+                    <li><img id="angry" src="~/Assets/images/LikeIcon/angry.png" alt=""></li>
+                </ul>
+                <div class="comment">
+
+                </div>
+            </div>
+            <div class="btn-like">
+                @if (Session["taikhoan"] != null)
+                {
+                    <button onclick="AddTrangThai(@Model.IdBaiHat)" id="btn-like"><i class='far fa-thumbs-up' style='font-size:17px'></i> Thích</button>
+                }
+                else
+                {
+                    <button data-toggle="modal" data-target="#myModal1"><i class='far fa-thumbs-up' style='font-size:17px'></i> Thích</button>                  
+                }
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("~/Views/ThongTinNgheSi/ThongTinNgheSiPartial/BaiHatNgheSi.cshtml", BaiHatKhac)
+</div>
+

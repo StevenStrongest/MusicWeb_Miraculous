@@ -1,0 +1,63 @@
+﻿
+<div class="ms_rcnt_slider test">
+    <div class="ms_heading">
+        <h1>Thịnh Hành</h1>
+        <span class="veiw_all"><a href="BaiHatController/TatCaBaiHat">Xem tất cả</a></span>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            @foreach (var item in Model)
+            {
+                <div class="swiper-slide">
+                    <div class="ms_rcnt_box">
+                        <div class="ms_rcnt_box_img">
+                            <img src="~/Assets/images/ImagesOutSource/ImagesSong/@item.AnhBaiHat" />
+                            <div class="ms_main_overlay">
+                                <div class="ms_box_overlay"></div>
+                                <div class="ms_more_icon">
+                                    <img src="~/Assets/images/svg/more.svg" />
+                                </div>
+                                <ul class="more_option">
+                                    @if (Session["taikhoan"] != null)
+                                    {
+                                        <li><a onclick="AddBaiHatFavorit(@item.IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_fav"></span></span>Yêu thích</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="javascript:0" data-toggle="modal" data-target="#myModal1"><span class="opt_icon"><span class="icon icon_fav"></span></span>Yêu thích</a></li>
+                                    }
+                                    <li><a onclick="AddQueue(@item.IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_queue"></span></span>Danh sách phát</a></li>
+
+                                    <li><a href="/Home/Dowload?id=@item.IdBaiHat"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Tải xuống</a></li>
+
+                                    <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                                    <li>
+                                        <div class="fb-share-button" data-href="@item.LinkChiaSe" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                                    </li>
+                                </ul>
+
+                                <div class="ms_play_icon @item.IdBaiHat">
+                                    <img src="~/Assets/images/svg/play.svg" />
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="ms_rcnt_box_text">
+                            <h3><a href="/BaiHatController/ChiTietBaiHat?id=@item.IdBaiHat">@item.TenBaiHat</a></h3>
+                            <p>@item.NgheSi.TenNgheSi</p>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+
+        </div>
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next slider_nav_next"></div>
+    <div class="swiper-button-prev slider_nav_prev"></div>
+</div>
+
+
+

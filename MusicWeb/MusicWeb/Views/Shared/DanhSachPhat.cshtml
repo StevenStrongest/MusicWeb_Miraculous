@@ -1,0 +1,160 @@
+﻿<div id="playlist-wrap" class="jp-playlist">
+    <div class="jp_queue_cls"><i class="fa fa-times" aria-hidden="true"></i></div>
+    <h2>queue</h2>
+    <div class="jp_queue_list_inner">
+        <ul id="list-queue">
+            
+        </ul>
+    </div>
+    <div class="jp_queue_btn">
+        <a href="javascript:;" class="ms_clear" data-toggle="modal" data-target="#clear_modal">clear</a>
+        <a href="clear_modal.html" class="ms_save" data-toggle="modal" data-target="#save_modal">save</a>
+    </div>
+</div>
+
+@*<script>
+
+    function Play() {
+
+        var songs;
+        var song = new Audio();
+        var currentSong;
+        var duration = document.getElementById('duration');
+        var currentTime = document.getElementById('currentTime');
+        var currentTime = document.getElementById('currentTime');
+        var Control = document.getElementById('controlPlay');
+        $('.player_left').hide();
+        var flag = false;
+
+        $.ajax({
+            url: '/BaiHatController/Index',
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            success: function (rs) {
+                songs = rs;
+
+                window.onload = loadSong;
+
+                function loadSong(rs) {
+                    song.src = '/MusicDowload/' + rs;
+                    song.playbackRate = 1;
+                }
+                setInterval(updateSongSliderQueue, 1000);
+
+                function updateSongSliderQueue() {
+                    var c = Math.round(song.currentTime);
+                    currentTime.textContent = convertTime(c);
+                    song.addEventListener('timeupdate', function () {
+                        var position = song.currentTime / song.duration;
+                        fillBar.style.width = position * 100 + '%';
+                        if (flag) {
+                            if (song.ended) {
+                                loadSong(currentSong);
+                                playOrPauseSong();
+                            }
+                        }
+
+                    });
+                }
+
+                function convertTime(secs) {
+                    var min = Math.floor(secs / 60);
+                    var sec = secs % 60;
+                    min = (min < 10) ? "0" + min : min;
+                    sec = (sec < 10) ? "0" + sec : sec;
+                    return (min + ":" + sec);
+                }
+                //Hàm show thời gian bài hát
+                function showDuration() {
+                    var d = Math.floor(song.duration);
+                    //songSlider.setAttribute("max", d);
+                    duration.textContent = convertTime(d);
+                }
+
+                function seekSong() {
+                    currentTime.textContent = convertTime(song.currentTime);
+                }
+
+
+                //Hàm Dừng và chơi
+                function playOrPauseSong() {
+                    song.playbackRate = 1;
+                    if (song.paused) {
+                        $('button.jp-play .ms_play_control').attr('style', 'background-position: 981px 0px!important');
+                        song.play();
+                    } else {
+                        $('button.jp-play .ms_play_control').attr('style', 'background-position: 941px 0px!important');
+                        song.pause();
+                    }
+                }
+
+                //Vòng lặp chọn bài hát
+                $.each(songs, function (index, values) {
+                    $('.' + values.Id).click(function () {
+                        currentSong = values.Link;
+                        $('.player_left').show();
+                        $(".jp-now-playing").html("<div class='jp-track-name'><span class='que_img'><img style='width: 50px; height: 50px' src='/Assets/images/ImagesOutSource/ImagesSong/" + values.Anh + "'></span><div class='que_data'>" + values.Ten + " <div class='jp-artist-name'>" + values.TenCaSi + "</div></div></div>");
+                        loadSong(values.Link);
+                        playOrPauseSong();
+                        setTimeout(showDuration, 1000);
+                        showDuration();
+                    });
+                });
+                //Stop and Play
+                Control.onclick = function () {
+                    playOrPauseSong();
+                }
+
+            },
+            error: function () {
+
+            }
+
+        });
+
+        //Tùy chỉnh âm thanh và các thứ
+
+        $('.knob-wrapper').mousedown(function () {
+            $(window).mousemove(function (e) {
+                var angle1 = getRotationDegrees($('.knob')),
+                    volume = angle1 / 270
+                song.volume = volume;
+            });
+            return false;
+        }).mouseup(function () {
+            $(window).unbind("mousemove");
+        });
+
+        //Phát Lại
+        var i = 1
+        $('.jp-repeat').click(function () {
+            if (i == 1) {
+                flag = true;
+                $('.jp-repeat .ms_play_control').attr('style', 'background-position: 580px 0px!important');
+                i = 2;
+            } else {
+                flag = false;
+                $('.jp-repeat .ms_play_control').attr('style', 'background-position: 60px 0px!important');
+                i = 1;
+            }
+        });
+
+
+        function getRotationDegrees(obj) {
+            var matrix = obj.css("-webkit-transform") ||
+                obj.css("-moz-transform") ||
+                obj.css("-ms-transform") ||
+                obj.css("-o-transform") ||
+                obj.css("transform");
+            if (matrix !== 'none') {
+                var values = matrix.split('(')[1].split(')')[0].split(',');
+                var a = values[0];
+                var b = values[1];
+                var angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+            } else { var angle = 0; }
+            return (angle < 0) ? angle + 360 : angle;
+        }
+
+    }
+</script>*@

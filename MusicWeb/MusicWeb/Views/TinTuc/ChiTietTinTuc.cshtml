@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietTinTuc";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model Model.Tintuc
+
+<div class="container">
+    <div class="header">
+        <h2 style="font-size: 25px;margin: 20px 0px">@Model.TieuDeTinTuc</h2>
+    </div>
+
+    <div style="margin: 40px;z-index: 9999" id="NoiDungTinTuc">
+        @Html.Raw(Model.NoiDung)
+    </div>
+</div>
+

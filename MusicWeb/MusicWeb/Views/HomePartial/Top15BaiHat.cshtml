@@ -1,0 +1,208 @@
+﻿@using Model
+@model IEnumerable<BaiHat>
+<div class="ms_weekly_wrapper">
+    <div class="ms_weekly_inner">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ms_heading">
+                    <h1>Top 15 Bài Hát Hay Nhất</h1>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 padding_right40">
+
+                @for (int i = 0; i < 5; i++)
+                {
+                    <div class="ms_weekly_box">
+                        <div class="weekly_left">
+                            <span class="w_top_no">
+                                @Convert.ToInt32(@i + 1)
+                            </span>
+                            <div class="w_top_song">
+                                <div class="w_tp_song_img">
+                                    <img src="~/Assets/images/ImagesOutSource/ImagesSong/@Model.ElementAt(i).AnhBaiHat" class="img-fluid" />
+                                    <div class="ms_song_overlay">
+                                    </div>
+                                    <div class="ms_play_icon @Model.ElementAt(i).IdBaiHat">
+                                        <img src="~/Assets/images/svg/play.svg" />
+                                    </div>
+                                </div>
+                                <div class="w_tp_song_name">
+                                    <h3>
+                                        <a title=" @Model.ElementAt(i).TenBaiHat" href="/BaiHatController/ChiTietBaiHat?id=@Model.ElementAt(i).IdBaiHat">
+                                            @if (Model.ElementAt(i).TenBaiHat.Length > 22)
+                                            {
+                                                @Model.ElementAt(i).TenBaiHat.Substring(0, 22);
+                                            }
+                                            else
+                                            {
+                                                @Model.ElementAt(i).TenBaiHat;
+                                            }
+                                        </a>
+                                    </h3>
+                                    <p>@Model.ElementAt(i).NgheSi.TenNgheSi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weekly_right">
+                            <span id="timeSong_@Model.ElementAt(i).IdBaiHat" class="w_song_time">00:00</span>
+                            <span class="ms_more_icon" data-other="1">
+                                <img src="~/Assets/images/svg/more.svg" />
+                            </span>
+                        </div>
+                        <ul class="more_option">
+                            @if (Session["taikhoan"] != null)
+                            {
+                                <li><a onclick="AddBaiHatFavorit(@Model.ElementAt(i).IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_fav"></span></span>Yêu thích</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="javascript:0" data-toggle="modal" data-target="#myModal1"><span class="opt_icon"><span class="icon icon_fav"></span></span>Yêu thích</a></li>
+                            }
+                            <li><a onclick="AddQueue(@Model.ElementAt(i).IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_queue"></span></span>Danh sách phát</a></li>
+                            <li><a href="/Home/Dowload?id=@Model.ElementAt(i).IdBaiHat"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Tải xuống</a></li>
+                            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                            <li>
+                                <div class="fb-share-button" data-href="@Model.ElementAt(i).LinkChiaSe" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms_divider"></div>
+                }
+
+            </div>
+            <div class="col-lg-4 col-md-12 padding_right40">
+                @for (int i = 5; i < 10; i++)
+                {
+                    <div class="ms_weekly_box">
+                        <div class="weekly_left">
+                            <span class="w_top_no">
+                                @Convert.ToInt32(@i + 1)
+                            </span>
+                            <div class="w_top_song">
+                                <div class="w_tp_song_img">
+                                    <img src="~/Assets/images/ImagesOutSource/ImagesSong/@Model.ElementAt(i).AnhBaiHat" class="img-fluid" />
+                                    <div class="ms_song_overlay">
+                                    </div>
+                                    <div class="ms_play_icon @Model.ElementAt(i).IdBaiHat">
+                                        <img src="~/Assets/images/svg/play.svg" />
+                                    </div>
+                                </div>
+                                <div class="w_tp_song_name">
+                                    <h3>
+                                        <a title=" @Model.ElementAt(i).TenBaiHat" href="/BaiHatController/ChiTietBaiHat?id=@Model.ElementAt(i).IdBaiHat">
+                                            @if (Model.ElementAt(i).TenBaiHat.Length > 22)
+                                            {
+                                                @Model.ElementAt(i).TenBaiHat.Substring(0,22);
+                                            }
+                                            else
+                                            {
+                                                @Model.ElementAt(i).TenBaiHat;
+                                            }
+                                        </a>
+                                    </h3>
+                                    <p>@Model.ElementAt(i).NgheSi.TenNgheSi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weekly_right">
+                            <span id="timeSong_@Model.ElementAt(i).IdBaiHat" class="w_song_time">00:00</span>
+                            <span class="ms_more_icon" data-other="1">
+                                <img src="~/Assets/images/svg/more.svg" />
+                            </span>
+                        </div>
+                        <ul class="more_option">
+                            @if (Session["taikhoan"] != null)
+                            {
+                                <li><a onclick="AddBaiHatFavorit(@Model.ElementAt(i).IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="javascript:0" data-toggle="modal" data-target="#myModal1"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                            }
+                            <li><a onclick="AddQueue(@Model.ElementAt(i).IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                            <li><a href="/Home/Dowload?id=@Model.ElementAt(i).IdBaiHat"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                            <li>
+                                <div class="fb-share-button" data-href="@Model.ElementAt(i).LinkChiaSe" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms_divider"></div>
+                }
+            </div>
+            <div class="col-lg-4 col-md-12">
+                @{
+                    int max = 15;
+                    int count;
+                    if (Model.Count() < max)
+                    {
+                        count = Model.Count();
+                    }
+                    else
+                    {
+                        count = max;
+                    }
+                }
+                @for (int i = 10; i < count; i++)
+                {
+                    <div class="ms_weekly_box">
+                        <div class="weekly_left">
+                            <span class="w_top_no">
+                                @Convert.ToInt32(@i + 1)
+                            </span>
+                            <div class="w_top_song">
+                                <div class="w_tp_song_img">
+                                    <img src="~/Assets/images/ImagesOutSource/ImagesSong/@Model.ElementAt(i).AnhBaiHat" class="img-fluid" />
+                                    <div class="ms_song_overlay">
+                                    </div>
+                                    <div class="ms_play_icon @Model.ElementAt(i).IdBaiHat">
+                                        <img src="~/Assets/images/svg/play.svg" />
+                                    </div>
+                                </div>
+                                <div class="w_tp_song_name">
+                                    <h3>
+                                        <a title=" @Model.ElementAt(i).TenBaiHat" href="/BaiHatController/ChiTietBaiHat?id=@Model.ElementAt(i).IdBaiHat">
+                                            @if (Model.ElementAt(i).TenBaiHat.Length > 22)
+                                            {
+                                               @Model.ElementAt(i).TenBaiHat.Substring(0, 22);
+                                            }
+                                            else
+                                            {
+                                                @Model.ElementAt(i).TenBaiHat;
+                                            }
+                                        </a>
+                                    </h3>
+                                    <p>@Model.ElementAt(i).NgheSi.TenNgheSi</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="weekly_right">
+                            <span id="timeSong_@Model.ElementAt(i).IdBaiHat" class="w_song_time">00:00</span>
+                            <span class="ms_more_icon" data-other="1">
+                                <img src="~/Assets/images/svg/more.svg" />
+                            </span>
+                        </div>
+                        <ul class="more_option">
+                            @if (Session["taikhoan"] != null)
+                            {
+                                <li><a onclick="AddBaiHatFavorit(@Model.ElementAt(i).IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="javascript:0" data-toggle="modal" data-target="#myModal1"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a></li>
+                            }
+                            <li><a onclick="AddQueue(@Model.ElementAt(i).IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To Queue</a></li>
+                            <li><a href="/Home/Dowload?id=@Model.ElementAt(i).IdBaiHat"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Download Now</a></li>
+                            <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                            <li>
+                                <div class="fb-share-button" data-href="@Model.ElementAt(i).LinkChiaSe" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ms_divider"></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

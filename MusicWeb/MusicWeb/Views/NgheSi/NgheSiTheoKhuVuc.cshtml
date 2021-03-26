@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "NgheSiTheoKhuVuc";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@{
+    List<Model.NgheSi> NgheSiTheoKhuVuc = ViewBag.NgheSiTheoKhuVuc;
+    List<Model.KhuVuc> TatCaKhuVuc = ViewBag.TatCaKhuVuc;
+}
+
+@Html.Partial("~/Views/NgheSi/NgheSiPartial/KhuVuc.cshtml", TatCaKhuVuc)
+
+@Html.Partial("~/Views/NgheSi/NgheSiPartial/TatCaNgheSi.cshtml", NgheSiTheoKhuVuc)

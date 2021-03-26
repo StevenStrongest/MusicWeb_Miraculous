@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "ListVideo";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+
+@{
+    List<Model.Video> VideoHot = ViewBag.VideoHot;
+    List<Model.Video> TatCaVideo = ViewBag.TatCaVideo;
+}
+
+@Html.Partial("~/Views/Video/VideoPartial/VideoHot.cshtml", VideoHot)
+
+@Html.Partial("~/Views/Video/VideoPartial/TatCaVideo.cshtml", TatCaVideo)
+
+
+

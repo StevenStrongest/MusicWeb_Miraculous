@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model Model.Tintuc
+@using (Html.BeginForm("Update", "TinTuc", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @*@Html.ValidationSummary()*@
+    @Html.HiddenFor(Model => Model.IdTinTuc, "value")
+    <div class="row">
+        <div class="col-md-3">
+            <div class="contact-info">
+                <img src="https://play-lh.googleusercontent.com/EJknHgUHf1PEENaPyDzbBpfABGASBZrLS4Pr3-VRJLFpFtujyU5H8boRlzq9HqPAkpAD" width="100px" alt="image" />
+                <h2>Cập nhật Tin Tức</h2>
+
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="contact-form">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="fname">Tiêu đề tin tức</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.TieuDeTinTuc, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="fname">Ảnh tiêu đề</label>
+                    <div class="col-sm-10">
+                        @Html.TextBox("fileTinTuc", "AnhTieuDe", new { type = "file", @class = "form-control" })
+                        @Html.HiddenFor(Model => Model.IdTinTuc)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="lname">Nội dung tin tức</label>
+                    <div class="col-sm-10">
+                        @Html.TextAreaFor(model => model.NoiDung, new { @class = "ckeditor" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="email">Tài khoản</label>
+                    <div class="col-sm-10">
+                        @Html.DropDownListFor(x => Model.IdTaiKhoan, new SelectList(ViewBag.Tk, "IdTaiKhoan", "TaiKhoan1"))
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<style>
+    body {
+        background-color: #25274d;
+    }
+
+    .contact {
+        padding: 4%;
+        height: 400px;
+    }
+
+    .col-md-3 {
+        background: #ff9b00;
+        padding: 4%;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+    }
+
+    .contact-info {
+        margin-top: 10%;
+    }
+
+        .contact-info img {
+            margin-bottom: 15%;
+        }
+
+        .contact-info h2 {
+            margin-bottom: 10%;
+        }
+
+    .col-md-9 {
+        background: #fff;
+        padding: 3%;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+    }
+
+    .contact-form label {
+        font-weight: 600;
+    }
+
+    .contact-form button {
+        background: #25274d;
+        color: #fff;
+        font-weight: 600;
+        width: 25%;
+    }
+
+        .contact-form button:focus {
+            box-shadow: none;
+        }
+</style>
+
+

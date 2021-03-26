@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Model.NguoiDung>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Quản lý Người Dùng </h6>
+    </div>
+    @*<a href="~/Admin/NgheSi/AddNew" class="btn btn-primary" style="text-decoration:none;margin-left:30px;width:120px;margin-top:10px;"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</a>*@
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered" style="text-align:center" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tên đăng nhập</th>
+                        <th>Mật khẩu </th>
+                        <th>Tên hiển thị </th>
+                        <th>Ảnh đại diện </th>
+                        <th>Địa chỉ</th>
+                        <th>Email</th>
+                        <th>Xóa</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TaiKhoan</td>
+                            <td><input type="password" readonly="true" style="border:none;text-align:center" value="@item.MatKhau" /> </td>
+                            <td>@item.TenNguoiDung</td>
+                            <td><img src="~/Assets/avatar/@item.AnhDaiDien" width="50" height="50" /></td>
+                            <td>@item.DiaChi</td>
+                            <td>@item.Email</td>
+                            <td><a href="~/Admin/NguoiDung/Delete?id=@item.IdNguoiDung"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

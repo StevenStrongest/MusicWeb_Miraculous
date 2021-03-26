@@ -1,0 +1,42 @@
+﻿
+<div class="ms_releases_wrapper">
+    <div class="ms_heading">
+        <h1>Mới Phát Hành</h1>
+        <span class="veiw_all"><a href="#">view more</a></span>
+    </div>
+    <div class="ms_release_slider swiper-container">
+        <div class="ms_divider"></div>
+        <div class="swiper-wrapper">
+            @foreach (var item in Model)
+            {
+                <div class="swiper-slide">
+                    <div class="ms_release_box">
+                        <div class="w_top_song">
+                            <span class="slider_dot"></span>
+                            <div class="w_tp_song_img">
+                                <img src="~/Assets/images/ImagesOutSource/ImagesSong/@item.AnhBaiHat" />
+                                <div class="ms_song_overlay">
+                                </div>
+                                <div class="ms_play_icon @item.IdBaiHat">
+                                    <img src="~/Assets/images/svg/play.svg" />
+                                </div>
+                            </div>
+                            <div class="w_tp_song_name">
+                                <h3><a href="/BaiHatController/ChiTietBaiHat?id=@item.IdBaiHat">@item.TenBaiHat</a></h3>
+                                <p>@item.NgheSi.TenNgheSi</p>
+                            </div>
+                        </div>
+                        <div class="weekly_right">
+                            <span class="w_song_time">5:10</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next2 slider_nav_next"></div>
+    <div class="swiper-button-prev2 slider_nav_prev"></div>
+</div>
+
+

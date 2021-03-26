@@ -1,0 +1,88 @@
+﻿
+<div id="uploadNhac" class="modal  centered-modal" role="dialog">
+    <div class="modal-dialog login_dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">
+                <i class="fa_icon form_close"></i>
+            </button>
+            <div class="modal-body">
+                <div style="height: 570px!important;min-height: 50vh" class="container-contact100">
+                    <div style="height: 570px!important;overflow: auto" class="wrap-contact100">
+                        <form method="post" action="/NhacCaNhan/Upload" class="contact100-form validate-form" enctype="multipart/form-data">
+                            <span class="contact100-form-title">
+                                Tải Nhạc Lên
+                            </span>
+
+
+                            <div class="wrap-input100 validate-input" data-validate="Tên bài hát không được bỏ trống">
+                                <label class="label-input100" for="name">Tên Bài Hát</label>
+                                <input id="name" class="input100" type="text" name="ten" placeholder="Tên bài hát...">
+                                <span class="focus-input100"></span>
+                            </div>
+
+
+                            <div class="wrap-input100 validate-input" data-validate="Nhạc sĩ không được bỏ trống">
+                                <label class="label-input100" for="email">Nghệ sĩ</label>
+                                <input id="name" class="input100" type="text" name="nghesi" placeholder="Nghệ sĩ thực hiện...">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" data-validate="Vui lòng chọn ảnh">
+                                <label class="label-input100" for="email">Ảnh tiêu đề</label>
+                                <input onchange="loadFile(event)" style="position: absolute;z-index: 999;opacity: 0" id="name" class="input100" type="file" name="anh">
+                                <span class="focus-input100"></span>
+
+                                <button type="button" style="background: blue; width: 80px; border-radius: 5px; position: relative; left: 27px;top: 1px;color: #fff"><i class="far fa-image"></i> Tải lên</button>
+                            </div>
+
+                            <div style="text-align: center;display: none" id="rs_image">
+                                <img id="blah" alt="your image" style="width: 200px; height: auto" />
+                            </div>
+
+                            <div class="wrap-input100 validate-input" data-validate="Vui lòng chọn nhạc">
+                                <label class="label-input100" for="email">Nhạc tải lên</label>
+                                <input onchange="loadFileN(event)" style="position: absolute;z-index: 999;opacity: 0" id="name" class="input100" type="file" name="nhac">
+                                <span class="focus-input100"></span>
+
+                                <button type="button" style="background: blue; width: 80px; border-radius: 5px; position: relative; left: 27px;color: #fff;top: 4px;"><i class="fas fa-play-circle"></i> Tải lên</button>
+                            </div>
+
+                            <div style="text-align: center;display: none" id="rs_mp4">
+                                <audio id="auo" controls></audio>
+                            </div>
+
+
+                            <div class="container-contact100-form-btn">
+                                <button style="position: relative; top: 105px; background: #000;border-radius: 5px; padding: 6px 60px" class="contact100-form-btn">
+                                    Tải
+                                </button>
+                            </div>
+
+                        </form>
+
+                        <div class="contact100-more flex-col-c-m" style="background-image: url('https://png.pngtree.com/png-clipart/20190515/original/pngtree-music-and-live-music-logo-with-neon-light-effect-vector-png-image_3669646.jpg');">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+<script>
+    var loadFile = function (event) {
+        $('#rs_image').show();
+        var output = document.getElementById('blah');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    var loadFileN = function (event) {
+        $('#rs_mp4').show();
+        var x = document.getElementById('auo');
+        x.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+
+

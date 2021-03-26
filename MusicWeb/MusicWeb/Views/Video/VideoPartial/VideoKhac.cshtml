@@ -1,0 +1,19 @@
+﻿<div style="padding: 10px 14px" id="tile-Play">
+    <h4 style="font-size: 17px">Xem Thêm</h4>
+</div>
+@foreach (var item in Model)
+{
+    <div style="padding: 5px 0px" class="container mt-3">
+        <div class="media p-3">
+            <a href="/Video/PlayVideo?id=@item.IdVideo">
+                <img style="width: 100px" src="~/Assets/images/PosterVideo/@item.Poster" />
+            </a>
+            <div style="padding: 0px 10px" class="media-body">
+                <a href="/Video/PlayVideo?id=@item.IdVideo">
+                   <h2 style="font-size: 16px">@item.TieuDe</h2>
+                </a>
+                 <p>@item.NgheSi.TenNgheSi</p>
+            </div>
+        </div>
+    </div>
+}

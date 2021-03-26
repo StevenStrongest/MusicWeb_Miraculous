@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@{
+    List<Model.Album> TatCaAlbum = ViewBag.TatCaAlbum;
+    List<Model.Album> AlbumHot = ViewBag.AlbumHot;
+    List<Model.BaiHat> BaiHatTheoAlbum = ViewBag.BaiHatTheoAlbum;
+}
+
+@Html.Partial("~/Views/Album/AlbumPartial/TatCaAlbum.cshtml", TatCaAlbum)
+@Html.Partial("~/Views/Album/AlbumPartial/AlbumHot.cshtml", AlbumHot)
+@Html.Partial("~/Views/Album/AlbumPartial/BaiHatTheoAlbum.cshtml", BaiHatTheoAlbum)

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@model List<Model.KhuVuc>
+
+@{
+    List<Model.NgheSi> NgheSiHot = ViewBag.NgheSiHot;
+    List<Model.NgheSi> TatCaNgheSi = ViewBag.TatCaNgheSi;
+    List<Model.KhuVuc> KhuVuc = ViewBag.KhuVuc;
+}
+
+<!--Khu Vực-->
+@Html.Partial("~/Views/NgheSi/NgheSiPartial/KhuVuc.cshtml", KhuVuc)
+
+@Html.Partial("~/Views/HomePartial/NgheSiNoiBat.cshtml", NgheSiHot)
+
+<!--Tất cả nghệ sĩ-->
+@Html.Partial("~/Views/NgheSi/NgheSiPartial/TatCaNgheSi.cshtml", TatCaNgheSi)

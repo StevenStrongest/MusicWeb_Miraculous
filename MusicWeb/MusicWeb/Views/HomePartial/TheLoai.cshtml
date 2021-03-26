@@ -1,0 +1,121 @@
+﻿@using Model
+@model IEnumerable<TheLoai>
+<div class="ms_genres_wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ms_heading">
+                <h1>Thể loại</h1>
+                <span class="veiw_all"><a href="#">view more</a></span>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="ms_genres_box">
+                <img src="~/Assets/images/genrs/@Model.ElementAt(0).AnhTheLoai" alt="" class="img-fluid" />
+                <div class="ms_main_overlay">
+                    <div class="ms_box_overlay"></div>
+                </div>
+                <div class="ovrly_text_div">
+                    <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(0).IdTheLoai">@Model.ElementAt(0).TenTheLoai</a></span>
+                    <span class="ovrly_text2"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(0).IdTheLoai">view song</a></span>
+                </div>
+                <div class="ms_box_overlay_on">
+                    <div class="ovrly_text_div">
+                        <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(0).IdTheLoai">@Model.ElementAt(0).TenTheLoai</a></span>
+                        <span class="ovrly_text2"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(0).IdTheLoai">view song</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="ms_genres_box">
+                        <img src="~/Assets/images/genrs/@Model.ElementAt(1).AnhTheLoai" alt="" class="img-fluid" />
+                        <div class="ms_main_overlay">
+                            <div class="ms_box_overlay"></div>
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(1).IdTheLoai">@Model.ElementAt(1).TenTheLoai</a></span>
+                            </div>
+                        </div>
+                        <div class="ms_box_overlay_on">
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(1).IdTheLoai">@Model.ElementAt(1).TenTheLoai</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="ms_genres_box">
+                        <img src="~/Assets/images/genrs/@Model.ElementAt(2).AnhTheLoai" alt="" class="img-fluid" />
+                        <div class="ms_main_overlay">
+                            <div class="ms_box_overlay"></div>
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(2).IdTheLoai">@Model.ElementAt(2).TenTheLoai</a></span>
+                            </div>
+                        </div>
+                        <div class="ms_box_overlay_on">
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(2).IdTheLoai">@Model.ElementAt(2).TenTheLoai</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="ms_genres_box">
+                        <img src="~/Assets/images/genrs/@Model.ElementAt(4).AnhTheLoai" alt="" class="img-fluid" />
+                        <div class="ms_main_overlay">
+                            <div class="ms_box_overlay"></div>
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(4).IdTheLoai">@Model.ElementAt(4).TenTheLoai</a></span>
+                            </div>
+                        </div>
+                        <div class="ms_box_overlay_on">
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(4).IdTheLoai">@Model.ElementAt(4).TenTheLoai</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="ms_genres_box">
+                        <img src="~/Assets/images/genrs/@Model.ElementAt(5).AnhTheLoai" alt="" class="img-fluid" />
+                        <div class="ms_main_overlay">
+                            <div class="ms_box_overlay"></div>
+                            <div class="ms_play_icon">
+                                <img src="images/svg/play.svg" alt="">
+                            </div>
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(5).IdTheLoai">@Model.ElementAt(5).TenTheLoai</a></span>
+                            </div>
+                        </div>
+                        <div class="ms_box_overlay_on">
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(5).IdTheLoai">@Model.ElementAt(5).TenTheLoai</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="ms_genres_box">
+                <img src="~/Assets/images/genrs/@Model.ElementAt(3).AnhTheLoai" alt="" class="img-fluid" />
+                <div class="ms_main_overlay">
+                    <div class="ms_box_overlay"></div>
+                    <div class="ms_play_icon">
+                        <img src="images/svg/play.svg" alt="">
+                    </div>
+                    <div class="ovrly_text_div">
+                        <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(3).IdTheLoai">@Model.ElementAt(3).TenTheLoai</a></span>
+                    </div>
+                </div>
+                <div class="ms_box_overlay_on">
+                    <div class="ovrly_text_div">
+                        <span class="ovrly_text1"><a href="/BaiHatController/BaiHatTheoTheLoai?id=@Model.ElementAt(3).IdTheLoai">@Model.ElementAt(3).TenTheLoai</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

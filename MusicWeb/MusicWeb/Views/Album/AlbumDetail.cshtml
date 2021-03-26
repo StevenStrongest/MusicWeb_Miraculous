@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "AlbumDetail";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model Model.Album
+
+@{
+    List<Model.BaiHat> BaiHatTheoAlbum = ViewBag.BaiHatTheoAlbum;
+}
+
+
+<div class="ms_album_single_wrapper ms_artist_single">
+    <div class="album_single_data">
+        <div class="album_single_img">
+            <img src="~/Assets/images/ImagesOutSource/Album/@Model.AnhAlbum" alt="" class="img-fluid" />
+        </div>
+        <div class="album_single_text">
+            <h2>Album @Model.TenAlbum</h2>
+            <p class="singer_name">@Model.KhuVuc.TenKhuVuc</p>
+            <p class="singer_name">Nghệ sĩ thực hiện: @Model.NgheSi.TenNgheSi</p>
+            <div class="about_artist">
+
+            </div>
+        </div>
+    </div>
+</div>
+    @Html.Partial("~/Views/ThongTinNgheSi/ThongTinNgheSiPartial/BaiHatNgheSi.cshtml", BaiHatTheoAlbum)

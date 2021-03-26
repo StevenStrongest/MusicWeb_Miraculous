@@ -1,0 +1,242 @@
+﻿
+@{
+    ViewBag.Title = "Addalbum";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model Model.Album
+@using (Html.BeginForm("Addalbum", "Album", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @*@Html.ValidationSummary()*@
+    @Html.HiddenFor(Model => Model.IdAlbum, "value")
+    <div class="screen">
+        <div class="screen-header">
+            <div class="screen-header-left">
+                <div class="screen-header-button close"></div>
+                <div class="screen-header-button maximize"></div>
+                <div class="screen-header-button minimize"></div>
+            </div>
+            <div class="screen-header-right">
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+            </div>
+        </div>
+        <div class="screen-body">
+            <div class="screen-body-item left">
+                <div class="app-title">
+                    <span>Thêm mới Album</span>
+                    <span></span>
+                </div>
+
+            </div>
+            <div class="screen-body-item">
+                <div class="app-form">
+
+                    <div class="app-form-group">
+
+                        @Html.TextBoxFor(x => x.TenAlbum, new { @class = "app-form-control", placeholder = "Tên Album" })
+                        @Html.ValidationMessageFor(model => model.TenAlbum, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="app-form-group">
+
+                        @Html.TextBox("file", "", new { type = "file", @class = "app-form-control", placeholder = "Ảnh Album" }) <br />
+
+                        @Html.HiddenFor(Model => Model.IdAlbum, "value")
+                        @Html.ValidationMessageFor(model => model.AnhAlbum, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="app-form-group">
+
+                        @Html.DropDownListFor(x => Model.IdKhuVuc, new SelectList(ViewBag.kv, "IdKhuVuc", "TenKhuVuc"), new { @class = "form-control" })
+                    </div>
+                    <div class="app-form-group">
+                        @Html.DropDownListFor(x => Model.IdNgheSi, new SelectList(ViewBag.ns, "IdNgheSi", "TenNgheSi"), new { @class = "form-control" })
+                    </div>
+                    <div class="app-form-group buttons">
+                        <button class="app-form-button">HỦY BỎ</button>
+                        <button class="app-form-button">THÊM MỚI</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<style>
+    .screen {
+        position: relative;
+        background: #3e3e3e;
+        border-radius: 15px;
+        margin-top: 8px;
+    }
+
+        .screen:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 20px;
+            right: 20px;
+            bottom: 0;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+            z-index: -1;
+        }
+
+    .screen-header {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        background: #4d4d4f;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .screen-header-left {
+        margin-right: auto;
+    }
+
+    .screen-header-button {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: 3px;
+        border-radius: 8px;
+        background: white;
+    }
+
+        .screen-header-button.close {
+            background: #ed1c6f;
+        }
+
+        .screen-header-button.maximize {
+            background: #e8e925;
+        }
+
+        .screen-header-button.minimize {
+            background: #74c54f;
+        }
+
+    .screen-header-right {
+        display: flex;
+    }
+
+    .screen-header-ellipsis {
+        width: 3px;
+        height: 3px;
+        margin-left: 2px;
+        border-radius: 8px;
+        background: #999;
+    }
+
+    .screen-body {
+        display: flex;
+    }
+
+    .screen-body-item {
+        flex: 1;
+        padding: 50px;
+    }
+
+        .screen-body-item.left {
+            display: flex;
+            flex-direction: column;
+        }
+
+    .app-title {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        color: #ea1d6f;
+        font-size: 26px;
+    }
+
+        .app-title:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 25px;
+            height: 4px;
+            background: #ea1d6f;
+        }
+
+    .app-contact {
+        margin-top: auto;
+        font-size: 8px;
+        color: #888;
+    }
+
+    .app-form-group {
+        margin-bottom: 15px;
+    }
+
+        .app-form-group.message {
+            margin-top: 40px;
+        }
+
+        .app-form-group.buttons {
+            margin-bottom: 0;
+            text-align: right;
+        }
+
+    .app-form-control {
+        width: 100%;
+        padding: 10px 0;
+        background: none;
+        border: none;
+        border-bottom: 1px solid #666;
+        color: #ddd;
+        font-size: 14px;
+        text-transform: none;
+        outline: none;
+        transition: border-color .2s;
+    }
+
+        .app-form-control:: placeholder{
+            color: #666;
+        }
+
+        .app-form-control:focus {
+            border-bottom-color: #ddd;
+        }
+
+    .app-form-button {
+        background: none;
+        border: none;
+        color: #ea1d6f;
+        font-size: 14px;
+        cursor: pointer;
+        outline: none;
+    }
+
+        .app-form-button:hover {
+            color: #b9134f;
+        }
+
+    .credits {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        color: #ffa4bd;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .credits-link {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .dribbble {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+    }
+</style>
+

@@ -1,0 +1,32 @@
+﻿
+.btn-video {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20%;
+}
+
+.btn-video-quantam {
+    border-radius: 10px!important;
+}
+
+.btn-video-comment {
+    background-color: #da7474;
+}
+    /* Darker background on mouse-over */
+
+.btn-video:hover {
+    background-color: #da7474;
+}
+
+.btn-video-comment:hover {
+    background-color: RoyalBlue;
+}
+
+.icon-user {
+    display: inline-block;
+    padding: 0px 10px;
+}

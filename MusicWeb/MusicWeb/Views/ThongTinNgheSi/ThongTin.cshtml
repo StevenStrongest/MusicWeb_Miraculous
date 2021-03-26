@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "ThongTin";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@model Model.NgheSi
+@{
+    List<Model.BaiHat> BaiHatTheoNgheSi = ViewBag.BaiHatTheoNgheSi;
+    List<Model.NgheSi> NgheSiKhac = ViewBag.NgheSiKhac;
+}
+<!----Album Single Section Start---->
+<div class="ms_album_single_wrapper ms_artist_single">
+    <div class="album_single_data">
+        <div class="album_single_img">
+            <img src="~/Assets/images/ImagesOutSource/ImagesSing/@Model.AnhNgheSi" alt="" class="img-fluid" />
+        </div>
+        <div class="album_single_text">
+            <h2>@Model.TenNgheSi</h2>
+            <p class="singer_name">@Model.KhuVuc.TenKhuVuc</p>
+            <div class="about_artist">
+                @{
+                    string srt = string.Empty;
+                }
+                @if (Model.MoTa.Length > 255)
+                {
+                    srt = Model.MoTa.Substring(0, 255);
+                    <span>@srt<span class="hide-text" style="display: none">@Model.MoTa.Substring(255)</span></span>
+                    <a onclick="ReadMore()" href="javascritp:0">Xem Thêm</a>
+                }
+                else
+                {
+                    srt = Model.MoTa;
+                    <span>@srt</span>
+                }
+
+
+            </div>
+            <div class="album_btn">
+                <a href="#" class="ms_btn play_btn"><span class="play_all"><img src="images/svg/play_all.svg" alt="">Play All</span><span class="pause_all"><img src="images/svg/pause_all.svg" alt="">Pause</span></a>
+                @if (Session["taikhoan"] != null)
+                {
+                    <a href="javascript:0" onclick="AddNgheSiYeuThich(@Model.IdNgheSi)" class="ms_btn"><span class="play_all"><img src="images/svg/add_q.svg" alt=""><i style="padding: 0px 5px" class="far fa-heart"></i>Yêu Thích</span></a>
+                }
+                else
+                {
+                    <a href="javascript:0" data-toggle="modal" data-target="#myModal1" class="ms_btn"><span class="play_all"><img src="images/svg/add_q.svg" alt=""><i style="padding: 0px 5px" class="far fa-heart"></i>Yêu Thích</span></a>
+                }
+            </div>
+        </div>
+        
+    </div>
+    <!----Song List---->
+    @Html.Partial("~/Views/ThongTinNgheSi/ThongTinNgheSiPartial/BaiHatNgheSi.cshtml", BaiHatTheoNgheSi)
+</div>
+<!--Nghệ sĩ khác-->
+@Html.Partial("~/Views/ThongTinNgheSi/ThongTinNgheSiPartial/NgheSiKhac.cshtml", NgheSiKhac)
+

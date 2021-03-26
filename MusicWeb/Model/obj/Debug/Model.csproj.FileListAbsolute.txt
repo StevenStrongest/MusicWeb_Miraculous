@@ -1,0 +1,12 @@
+D:\C#\MusicWeb\Model\bin\Debug\Model.dll.config
+D:\C#\MusicWeb\Model\bin\Debug\Model.dll
+D:\C#\MusicWeb\Model\bin\Debug\Model.pdb
+D:\C#\MusicWeb\Model\bin\Debug\EntityFramework.dll
+D:\C#\MusicWeb\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\C#\MusicWeb\Model\bin\Debug\EntityFramework.xml
+D:\C#\MusicWeb\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\C#\MusicWeb\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\C#\MusicWeb\Model\obj\Debug\Model.csproj.CopyComplete
+D:\C#\MusicWeb\Model\obj\Debug\Model.dll
+D:\C#\MusicWeb\Model\obj\Debug\Model.pdb
+D:\C#\MusicWeb\Model\obj\Debug\Model.csprojAssemblyReference.cache

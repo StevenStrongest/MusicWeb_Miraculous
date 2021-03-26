@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model Model.BaiHat
+
+<div style="background-color:darkslategray; width:auto;height:650px; margin-top:-20px;">
+
+    <div style="margin-left: 30px;">
+        <a href="~/Admin/AdBaiHat/Index">Quay lại</a>
+    </div>
+    <div class="container" style="width:500px;">
+        @using (Html.BeginForm("Add", "AdBaiHat", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @*@Html.ValidationSummary()*@
+            <div>
+                <div class="row">
+                    <div class="col-sm-3" style="color:cornsilk">Nghệ sĩ:</div>
+                    <div class="col-sm-9">
+
+                                <select name="getNgheSi" class="form-control selectpicker" id="select-country" data-live-search="true">
+                                    @foreach (var item in ViewBag.nghesi)
+                                    {
+
+                                        <option value="@item.IdNgheSi" data-tokens="@item.TenNgheSi">@item.TenNgheSi</option>
+
+                                    }
+                                </select>
+
+                        @*@Html.DropDownListFor(x => Model.IdNgheSi, new SelectList(ViewBag.nghesi, "IdNgheSi", "TenNgheSi"), new { @class = "form-control selectpicker"})*@
+                        <!-- Button trigger modal -->
+                        <a href="~/Admin/NgheSi/AddNew" class="btn btn-primary btn-sm" @*data-toggle="modal" data-target="#myModal"*@>
+                            Thêm ca sĩ
+                        </a>
+                    </div>
+
+
+                </div>
+                @*<div>@Html.Partial("~/Areas/Admin/Views/AdBaiHat/PartialBaiHat/ModelNgheSi.cshtml")</div>*@
+                <div class="row" style="margin-top:15px;">
+                    <div class="col-sm-3" style="color:cornsilk">Tên bài hát:</div>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(x => x.TenBaiHat, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TenBaiHat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:15px;">
+                    <div class="col-sm-3" style="color:cornsilk">
+                        Link bài hát:
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.TextBox("fileMusic", "", new { type = "file", @class = "form-control" })
+                        @Html.HiddenFor(Model => Model.IdBaiHat)
+                        @Html.ValidationMessageFor(model => model.LinkBaiHat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div class="col-sm-3" style="color:cornsilk">
+                        Ảnh bài hát :
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.TextBox("file", "", new { type = "file", @class = "form-control" })
+                        @Html.HiddenFor(Model => Model.IdBaiHat)
+                        @Html.ValidationMessageFor(model => model.AnhBaiHat, "", new { @class = "text-danger" })
+
+                        @*@ViewBag.Message*@
+                    </div>
+
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div class="col-sm-3" style="color:cornsilk">
+                        Lời bài hát:
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.TextAreaFor(x => Model.LoiBaihat, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div class="col-sm-3" style="color:cornsilk">
+                        Ngày phát hành:
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(x => Model.NgayPhatHanh, new { @type = "date", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.NgayPhatHanh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:15px;">
+                    <div class="col-sm-3" style="color:cornsilk">
+                        Thể loại:
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(x => Model.IdTheLoai, new SelectList(ViewBag.category, "IdTheLoai", "TenTheLoai"), new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row" style="margin-top:15px;">
+                    <div class="col-sm-3" style="color:cornsilk">
+                        Album:
+                    </div>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(x => Model.IdAlbum, new SelectList(ViewBag.album, "IdAlbum", "TenAlbum"), new { @class = "form-control" })
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success" style="margin-top:30px;">Thêm bài hát</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

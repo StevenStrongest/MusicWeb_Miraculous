@@ -1,0 +1,81 @@
+﻿
+@using Model
+@model IEnumerable<Tintuc>
+
+@if (Model.Count() > 1)
+{
+    for (int i = 0; i < 1; i++)
+    {       
+            var text = Model.ElementAt(i).TieuDeTinTuc;
+            if (text.Length > 50)
+            {
+                text = text.Substring(0,50);
+            }
+
+            var text2 = Model.ElementAt(i + 1).TieuDeTinTuc;
+            if (text2.Length > 50)
+            {
+                text2 = text2.Substring(0,50);
+            }
+
+
+        <div style="margin-bottom: 40px" class="nam-matis-top">
+            <div style="display: inline-block" class="col-md-5 nam-matis-1">
+               
+                <a href="#"><img style="width: 80%" src="~/Assets/images/ImagesOutSource/TinTuc/@Model.ElementAt(i).AnhTieuDe" class="img-responsive" alt=""></a>
+                <h3><a href="/TinTuc/ChiTietTinTuc?id=@Model.ElementAt(i).IdTinTuc">@text ...</a></h3>
+
+            </div>
+            <div style="display: inline-block" class="col-md-5 nam-matis-1">
+                <a href=""><img style="width: 80%" src="~/Assets/images/ImagesOutSource/TinTuc/@Model.ElementAt(i+1).AnhTieuDe" class="img-responsive" alt=""></a>
+                <h3><a href="/TinTuc/ChiTietTinTuc?id=@Model.ElementAt(i+1).IdTinTuc">@text2 ...</a></h3>
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    }
+}
+else
+{
+    <h2 style="font-size: 25px">Không có tin tức nào</h2>
+}
+
+
+@if (Model.Count() > 3)
+{
+    for (int i = 2; i < 3; i++)
+    {
+
+            var text = Model.ElementAt(i).TieuDeTinTuc;
+            if (text.Length > 50)
+            {
+                text = text.Substring(0,50);
+            }
+
+            var text2 = Model.ElementAt(i + 1).TieuDeTinTuc;
+            if (text2.Length > 50)
+            {
+                text2 = text2.Substring(0,50);
+            }
+
+
+        <div style="margin-bottom: 40px" class="nam-matis-top">
+            <div style="display: inline-block" class="col-md-5 nam-matis-1">
+                <a href="#"><img style="width: 80%" src="~/Assets/images/ImagesOutSource/TinTuc/@Model.ElementAt(i).AnhTieuDe" class="img-responsive" alt=""></a>
+                <h3><a href="/TinTuc/ChiTietTinTuc?id=@Model.ElementAt(i).IdTinTuc">@text ...</a></h3>
+
+            </div>
+            <div style="display: inline-block" class="col-md-5 nam-matis-1">
+                <a href=""><img style="width: 80%" src="~/Assets/images/ImagesOutSource/TinTuc/@Model.ElementAt(i+1).AnhTieuDe" class="img-responsive" alt=""></a>
+                <h3><a href="/TinTuc/ChiTietTinTuc?id=@Model.ElementAt(i+1).IdTinTuc">@text2 ...</a></h3>
+
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    }
+}
+
+
+
+
+

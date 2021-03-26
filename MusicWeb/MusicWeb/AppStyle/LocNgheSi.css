@@ -1,0 +1,29 @@
+﻿#locNgheSi {
+    width: 100%;
+    background-color: #262f5d;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+#locNgheSi ul{
+    padding: 0px;
+}
+
+    #locNgheSi ul li {
+        list-style-type: none;
+        display: inline-block;
+        padding-right: 20px;
+        padding-top: 7.5px;
+        padding-bottom: 7.5px;
+        padding-left: 10px;       
+    }
+
+#locNgheSi ul li a{
+    text-decoration: none;
+    font-size: 18px;
+    color: cornsilk;
+    font-weight: bold;
+}
+
+    #locNgheSi ul li a:hover {
+        color: #14182a;
+    }

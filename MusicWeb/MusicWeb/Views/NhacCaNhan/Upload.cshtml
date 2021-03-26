@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+@model List<Model.NhacCaNhan>
+
+<div id="Main-List-Like">
+
+    <div style="padding: 0px; border: 0px" class="main">
+        <div class="row">
+            <div class="col-10">
+                <h3 style="font-size: 30px">Danh Sách Tải Lên</h3>
+            </div>
+            <div class="col-2">
+                <button data-toggle="modal" data-target="#uploadNhac" style="border: 1px solid; padding: 5px 30px; color: #fff;background: #220c38;border-radius: 4px;cursor: pointer"><i class="fas fa-upload"></i> Tải lên</button>
+            </div>
+            <div class="col-12">
+                @if (Model != null)
+                {
+                    <div style="margin-top: 50px" id="listYeuThich">
+                        <div class="album_inner_list">
+                            <div class="album_list_wrapper">
+                                <ul class="album_list_name">
+                                    <li>#</li>
+                                    <li>Tên bài hát</li>
+                                    <li>Ca sĩ</li>
+                                    <li class="text-center">Thời gian</li>
+                                    <li class="text-center">Thêm vào mục yêu thích</li>
+                                    <li class="text-center">Xóa</li>
+                                </ul>
+                               @{ 
+                                   int i = 1;
+                               }
+                                @foreach (var item in Model)
+                                {
+                                    <ul class="active_@item.IdNhacCaNhan change_load">
+                                        <li><a class="cn_@item.IdNhacCaNhan" href="javascript:0"><span class="play_no">@i</span><span class="play_hover"></span></a></li>
+                                        <li><a href="#">@item.TenBaiHat</a></li>
+                                        <li><a href="#">@item.NgheSiThucHien</a></li>
+                                        <li class="text-center"><a id="time_@item.IdNhacCaNhan" href="#"></a></li>
+                                        <li class="text-center"><a href="#"><span class="ms_icon1 ms_fav_icon"></span></a></li>
+                                        <li onclick="RemoveNhacCaNhan(@item.IdNhacCaNhan)" class="text-center ms_more_icon">
+                                            <a href="javascript:;"><i class="fas fa-times"></i></a>
+                                        </li>
+                                    </ul>
+                                    i++;
+                                }
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <div id="listYeuThich">
+                        <h3 style="font-size: 22px">Bài hát</h3>
+                        <div class="BaiHatYeuThich" style="width: 100%; border: 1px solid #fff" id="BaiHatYeuThich">
+                            <i style="font-size: 130px;" class="fas fa-music"></i>
+                            <p style="font-size: 15px;width: 100%;padding: 20px 0px">Không có Bài Hát nào được tải lên</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+ 
+</div>
+
+<script>
+    function RemoveNhacCaNhan(x) {
+        $.ajax({
+            url: "/NhacCaNhan/DeleteNhacCaNhan",
+            type: "GET",
+            dataType: 'json',
+            data: {id: x},
+            cache: false,
+            success: function (rs) {
+                Notification("success", "Bạn vừa xóa  một bài hát");
+                $('.active_' + x).remove();
+            },
+            error() {
+                alert('Lỗi');
+            }
+        });
+    }
+</script>

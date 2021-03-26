@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<!--Truyền model sang PartialView-->
+@{
+    List<Model.BaiHat> NgheGanDay = ViewBag.NgheGanDay;
+    IEnumerable<Model.BaiHat> Top15 = (IEnumerable<Model.BaiHat>)ViewBag.Top15;
+    List<Model.NgheSi> NgheSiNoiBat = ViewBag.NgheSiNoiBat;
+    List<Model.BaiHat> MoiPhatHanh = ViewBag.MoiPhatHanh;
+    List<Model.Album> AlbumHot = ViewBag.AlbumHot;
+    IEnumerable<Model.TheLoai> TheLoai = (IEnumerable<Model.TheLoai>)ViewBag.TheLoai;
+}
+
+
+<!--Silde-->
+@Html.Partial("~/Views/HomePartial/Slide.cshtml")
+<!--Nghe Gần đây-->
+@Html.Partial("~/Views/HomePartial/NgheGanDay.cshtml", NgheGanDay)
+<!--Top 15 bài hát hay nhất-->
+@Html.Partial("~/Views/HomePartial/Top15BaiHat.cshtml", Top15)
+<!--Nghệ sĩ nổi bật-->
+@Html.Partial("~/Views/HomePartial/NgheSiNoiBat.cshtml", NgheSiNoiBat)
+<!--Banner 1-->
+@Html.Partial("~/Views/HomePartial/Banner1.cshtml")
+<!--Mới Phát Hành-->
+@Html.Partial("~/Views/HomePartial/MoiPhatHanh.cshtml", MoiPhatHanh)
+<!--Album Hot-->
+@Html.Partial("~/Views/HomePartial/AlbumHot.cshtml", AlbumHot)
+<!--Thể Loại-->
+@Html.Partial("~/Views/HomePartial/TheLoai.cshtml", TheLoai)

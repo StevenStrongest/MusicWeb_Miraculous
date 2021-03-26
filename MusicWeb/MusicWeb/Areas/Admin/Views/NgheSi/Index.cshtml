@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Model.NgheSi>
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Quản lý Nghe Si </h6>
+    </div>
+    <a href="~/Admin/NgheSi/AddNew" class="btn btn-primary" style="text-decoration:none;margin-left:30px;width:120px;margin-top:10px;"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</a>
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-bordered" style="text-align:center" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tên nghệ sĩ</th>
+                        <th>Ảnh</th>
+                        <th>Quốc gia </th>
+                        <th>Lượt quan tâm </th>
+                        <th>Sửa</th>
+                        <th>Xóa</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TenNgheSi</td>
+                            <td><img src="~/Areas/Admin/Asset/ImagesOutSource/imgsinger/@item.AnhNgheSi" width="50" height="50" /></td>
+                            <td>@item.KhuVuc.TenKhuVuc</td>
+                            <td>@item.LuotQuanTam</td>
+                            <td><a href="~/Admin/NgheSi/Update?id=@item.IdNgheSi"><i class="fa fa-wrench" aria-hidden="true"></i></a></td>
+                            <td><a href="~/Admin/NgheSi/Delete?id=@item.IdNgheSi"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

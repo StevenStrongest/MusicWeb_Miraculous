@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "ThongTinCaNhan";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+  
+
+<div class="ms_profile_wrapper">
+    <h1>Thông Tin Cá Nhân</h1>
+    <div class="ms_profile_box">       
+        @{
+            if (Session["taikhoan"] != null)
+            {
+                int idTaiKhoan = ((Model.NguoiDung)Session["taikhoan"]).IdNguoiDung;
+                var Ten = ((Model.NguoiDung)Session["taikhoan"]).TenNguoiDung;
+                var diachi = ((Model.NguoiDung)Session["taikhoan"]).DiaChi;
+                var email = ((Model.NguoiDung)Session["taikhoan"]).Email;
+                var taikhoan = ((Model.NguoiDung)Session["taikhoan"]).TaiKhoan;
+
+                <form method="post" action="/NguoiDung/UpdateThongTinCaNhan" enctype="multipart/form-data" id="ThongTinUser">
+                            <div class="ms_pro_img">
+                                @if (ViewBag.AnhDaiDien == null || ViewBag.AnhDaiDien == "")
+                                {
+                                    <img id="avatar" src="https://r9b7u4m2.stackpathcdn.com/prod/sites/eXfkOOiYH-uoddxClSi52viuasTF1mJ8olZ0u-tOtfFqK66gZCc90Ly_Uoc0VmR1eULwQ0uGf2JhPt4yPTts8A/themes/base/assets/images/avatar-1.png" alt="" class="img-fluid">
+                                }
+                                else
+                                {
+                                    <img id="avatar" src="~/Assets/avatar/@ViewBag.AnhDaiDien" />
+                                }
+                                <div class="pro_img_overlay">
+                                    <input onchange="document.getElementById('avatar').src = window.URL.createObjectURL(this.files[0])" style="position: absolute;top: 60px;left: 35px;opacity: 0;z-index: 9999" type="file" name="file" />
+                                    <i class="fa_icon edit_icon"></i>
+                                </div>
+                            </div>
+                    <div class="ms_pro_form">
+                        <div style="display: none" class="form-group">
+                            <label>ID *</label>
+                            <input type="text" name="id" readonly value="@idTaiKhoan" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Tên *</label>
+                            <input type="text" name="ten" required value="@Ten" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input style="background: #bcb3b3" type="text" readonly id="emailUser" name="email" required value="@email" class="form-control">
+                            <p class="text-error-emailUser" style="color: red"></p>
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ *</label>
+                            <input type="text" name="diachi" required value="@diachi" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Tài khoản</label>
+                            <input type="text" id="taikhoanUser" name="taikhoan" required value="@taikhoan" class="form-control">
+                            <p class="text-error-taikhoanUser" style="color: red;position: absolute;"></p>
+                        </div>
+                        <div class="pro-form-btn text-center marger_top15">
+                            <a href="javascript:0" class="ms_btn" onclick="ThayDoi()">Thay đổi</a>
+                            <a href="/Home/Index" class="ms_btn">Thoát</a>
+                        </div>
+                    </div>
+                </form>
+            }          
+        }
+
+    </div>
+</div>
+
+<script>
+    function ThayDoi() {
+        var emailUser = document.getElementById("emailUser");
+        var taikhoanUser = document.getElementById("taikhoanUser");
+
+        if (emailUser.value == "") {
+            $('.text-error-emailUser').text("Email không được để trống");
+            return false;
+        }
+        if (taikhoanUser.value == "") {
+            $('.text-error-taikhoanUser').text("Tài khoản không được để trống");
+            return false;
+        }  
+
+                
+        document.getElementById('ThongTinUser').submit();
+    }
+</script>

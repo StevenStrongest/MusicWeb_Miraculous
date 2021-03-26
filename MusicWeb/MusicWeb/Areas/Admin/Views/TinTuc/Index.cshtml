@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Quản lý Tin Tức </h6>
+    </div>
+    <div><a href="~/Admin/TinTuc/AddNew" class="btn btn-primary" style="text-decoration:none;margin-left:30px;width:120px;margin-top:10px;"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới </a></div>
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered" style="text-align:center" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tên người dùng </th>
+                        <th>Tiêu đề tin tức </th>
+                        <th>Thời gian  </th>
+                        <th>Sửa</th>
+                        <th>Xóa</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TaiKhoan.TaiKhoan1</td>
+                            <td>@item.TieuDeTinTuc</td>
+                            <td>@item.ThoiGian</td>
+                            <td><a href="~/Admin/TinTuc/Update?id=@item.IdTinTuc" style="text-decoration:none;"><i class="fa fa-wrench" aria-hidden="true"></i></a></td>
+                            <td><a href="~/Admin/TinTuc/DeleteTinTuc?id=@item.IdTinTuc" style="text-decoration:none;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

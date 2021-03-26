@@ -1,0 +1,52 @@
+﻿<div id="myModal" class="modal  centered-modal" role="dialog">
+    <div class="modal-dialog register_dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">
+                <i class="fa_icon form_close"></i>
+            </button>
+            <div class="modal-body">
+                <div class="ms_register_img">
+                    <img src="~/Assets/images/register_img.png" alt="" class="img-fluid" />
+                </div>
+                @using (Html.BeginForm("DangKy", "NguoiDung", FormMethod.Post, new {@id = "DangKySubmit" }))
+                {
+                    <div class="ms_register_form">
+                        <h2>Register / Sign Up</h2>
+                        <div class="form-group">
+                            <input type="text" name="user" id="userdk" placeholder="Enter Your User" class="form-control">
+                            <p style="color: red" id="text-error-userdk"></p>
+                            <span class="form_icon">
+                                <i class="fa_icon form-user" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" id="emaildk" placeholder="Enter Your Email" class="form-control">
+                            <p style="color: red" id="text-error-emaildk"></p>
+                            <span class="form_icon">
+                                <i class="fa_icon form-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input name="pass" type="password" id="passdk" placeholder="Enter Password" class="form-control">
+                            <p style="color: red" id="text-error-passdk"></p>
+                            <span class="form_icon">
+                                <i class="fa_icon form-lock" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input name="repass" type="password" id="repassdk" placeholder="Confirm Password" class="form-control">
+                            <span class="form_icon">
+                                <i class=" fa_icon form-lock" aria-hidden="true"></i>
+                            </span>
+                            <p style="color: red" id="text-error-repassdk"></p>
+                            <p style="color: red" id="text-error-dk"></p>
+                        </div>
+                        <a tabindex="0" href="javascript:0" onclick="DangKy()" class="ms_btn">Đăng ký</a>
+                        <p>Nếu bạn đã có tài khoản? <a href="#myModal1" data-toggle="modal" class="ms_modal hideCurrentModel">Đăng nhập tại đây</a></p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

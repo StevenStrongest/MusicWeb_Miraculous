@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model MusicWeb.Areas.Admin.Data.BaiHatModelAdmin
+<head>
+    <style>
+        body {
+            background-color: indigo;
+        }
+
+        div.row {
+            margin-top: 50px;
+        }
+
+        p {
+            color: cornsilk;
+        }
+    </style>
+</head>
+
+<div class="container" style="margin-bottom:50px;">
+    <div style="margin-left: 0px;">
+        <a href="~/Admin/AdBaiHat/Index">Quay lại</a>
+    </div>
+    @*<h2>@ViewBag.Message</h2>*@
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <p>Tên Bài hát: @Model.TenBaiHat</p>
+        </div>
+        <div>
+            <p>Ngày phát hành: @Model.NgayPhatHanh</p>
+        </div>
+        <div>
+            <p>Lượt nghe: @Model.LuotNghe <i class="fas fa-headphones" style="color:aqua"></i></p>
+        </div>
+        <div>
+            <p>Lượt tải: @Model.LuotTai <i class="fas fa-download" style="color:chartreuse"></i></p>
+        </div>
+        <div>
+            <p>Lượt thích: @Model.LuotThich <i class="fas fa-heart" style="color:deeppink"></i></p>
+        </div>
+        <div>
+            <p>Tên ca sĩ: @Model.NgheSi</p>
+        </div>
+        <div>
+            <p>Tên thể loại: @Model.TenTheLoai</p>
+        </div>
+        <div>
+            <p>Tên Album: @Model.TenAlbum</p>
+        </div>
+        <div>
+            <p>Nghe thử:</p>
+            <!--<audio controls preload='none'>
+                <source src="~/MusicDowload/@Model.LinkBaiHat" type="audio/ogg">-->
+            @*<source src="~/MusicDowload/@Model.LinkBaiHat" type="audio/mpeg">*@
+
+            <!--</audio>-->
+            <audio controls preload='none'>
+                <source src="~/MusicDowload/@Model.LinkBaiHat" type="audio/ogg" />
+            </audio>
+        </div>
+        <div>
+            <p>Lời bài hát:</p>
+            <textarea class="form-control" rows="30">@Model.LoiBaihat</textarea>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <img src="~/Assets/images/ImagesOutSource/ImagesSong/@Model.AnhBaiHat" alt="Alternate Text" width="450" height="350" />
+    </div>
+</div>
+</div>
+

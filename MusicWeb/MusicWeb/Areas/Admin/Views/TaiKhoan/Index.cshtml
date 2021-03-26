@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model List<Model.TaiKhoan>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Quản lý Tài Khoản </h6>
+    </div>
+    <a href="~/Admin/TaiKhoan/AddNew" class="btn btn-primary" style="text-decoration:none;margin-left:30px;width:120px;margin-top:10px;"><i class="fa fa-plus" aria-hidden="true"></i> Thêm mới</a>
+    <div class="card-body">
+        @Html.ValidationSummary()
+        <div class="table-responsive">
+            <table class="table table-bordered" style="text-align:center" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tên tài khoản</th>
+                        <th>Mật khẩu </th>
+                        <th>Loại tài khoản </th>
+                        <th>Sửa</th>
+                        <th>Xóa</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.TaiKhoan1</td>
+                            <td><input type="password" readonly="true" style="border:none;text-align:center" value="@item.MatKhau" /> </td>
+                            <td>@item.LoaiTaiKhoan.LoaiTaiKhoan1 </td>
+                            <td><a href="~/Admin/TaiKhoan/Update?id=@item.IdTaiKhoan"><i class="fa fa-wrench" aria-hidden="true"></i></a></td>
+                            <td><a href="javascript:0" onclick="DeleteTaiKhoan(@item.IdTaiKhoan)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function DeleteTaiKhoan(x) {
+        $.ajax({
+            url: '/TaiKhoan/Delete',
+            dataType: 'json',
+            data: { id: x },
+            success: function (rs) {
+                if (rs == 'thanhcong') {
+                    location.reload();
+                } else {
+                    alert(rs);
+                }              
+            }
+        });
+    }
+</script>
+
+

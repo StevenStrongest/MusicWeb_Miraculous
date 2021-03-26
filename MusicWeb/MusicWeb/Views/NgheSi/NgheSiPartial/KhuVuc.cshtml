@@ -1,0 +1,8 @@
+﻿<div id="locNgheSi">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="/NgheSi/NgheSiTheoKhuVuc?Idkhuvuc=@item.IdKhuVuc">@item.TenKhuVuc</a></li>
+        }
+    </ul>
+</div>

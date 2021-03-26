@@ -1,0 +1,71 @@
+﻿<div style="margin-top: 40px" class="album_inner_list">
+    <div class="album_list_wrapper">
+        <ul class="album_list_name">
+            <li>#</li>
+            <li>Tên bài hát</li>
+            <li>Ca sĩ</li>
+            <li class="text-center">Thòi gian</li>
+            <li class="text-center">Mục yêu thích</li>
+            <li class="text-center">Thêm</li>
+        </ul>
+        @{int count = 1; }
+        @foreach (var item in Model)
+        {
+            <ul class="active_@item.IdBaiHat change_load">
+                <li><a onclick="Playing(@item.IdBaiHat)" class="@item.IdBaiHat" href="javascript:0"><span class="play_no">@count.ToString("00")</span><span class="play_hover"></span></a></li>
+                <li><a href="/BaiHatController/ChiTietBaiHat?id=@item.IdBaiHat">@item.TenBaiHat</a></li>
+                <li><a href="#">@item.NgheSi.TenNgheSi</a></li>
+                <li class="text-center"><a id="timeSong_@item.IdBaiHat" href="#">0:00</a></li>
+                @if (Session["taikhoan"] != null)
+                {
+                    <li class="text-center"><a onclick="AddBaiHatFavorit(@item.IdBaiHat)" href="javascript:0"><span class="ms_icon1 ms_fav_icon"></span></a></li>
+                }
+                else
+                {
+                    <li class="text-center"><a href="javascript:0" data-toggle="modal" data-target="#myModal1"><span class="ms_icon1 ms_fav_icon"></span></a></li>
+                }
+            <li class="text-center ">
+                <div style="right: 70px;top: -21px" class="ms_more_icon">
+                    <img src="~/Assets/images/svg/more.svg" />
+                </div>
+                <div class="ms_box_overlay"></div>
+                <ul style="top: -27px; right: 94px" class="more_option">
+                    @if (Session["taikhoan"] != null)
+                    {
+                        <li><a onclick="AddBaiHatFavorit(@item.IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_fav"></span></span>Yêu thích</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="javascript:0" data-toggle="modal" data-target="#myModal1"><span class="opt_icon"><span class="icon icon_fav"></span></span>Yêu thích</a></li>
+                    }
+                    <li><a onclick="AddQueue(@item.IdBaiHat)" href="javascript:0"><span class="opt_icon"><span class="icon icon_queue"></span></span>Danh sách phát</a></li>
+
+                    <li><a href="/Home/Dowload?id=@item.IdBaiHat"><span class="opt_icon"><span class="icon icon_dwn"></span></span>Tải xuống</a></li>
+
+                    <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To Playlist</a></li>
+                    <li>
+                        <div class="fb-share-button" data-href="@item.LinkChiaSe" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a></div>
+                    </li>
+                </ul>
+            </li>
+            </ul>
+            count++;
+        }
+
+
+
+    </div>
+</div>
+
+<script>
+    function Playing(x) {
+        var z = document.getElementsByClassName('change_load');
+        var m = $('.active_' + x);
+        for (var i = 0; i < z.length; i++) {
+            if (z[i] != m) {
+                z[i].classList.remove('play_active_song');
+            }
+        }
+        $('.active_' + x).addClass("play_active_song");
+    }
+</script>

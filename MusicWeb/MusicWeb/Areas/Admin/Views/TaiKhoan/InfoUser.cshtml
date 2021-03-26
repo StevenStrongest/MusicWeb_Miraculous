@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "InfoUser";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model Model.TaiKhoan
+
+<div class="container">
+    <h2>Thông tin tài khoản của bạn</h2>
+    <div>
+        Tên Tài khoản: @Model.TaiKhoan1
+    </div>
+    <div>
+        Mật khẩu: <input type="password" readonly="true" style="border:none;text-align:center" value="@Model.MatKhau" />
+    </div>
+    <div>
+        Loại tài khoản: @Model.LoaiTaiKhoan.LoaiTaiKhoan1
+    </div>
+</div>
+
